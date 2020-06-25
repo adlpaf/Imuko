@@ -34,9 +34,9 @@
                             <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal-{{$item->id}}">Eliminar</a>
 
                             <div class="modal fade" id="updateModal-{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
-                                <form action="{{url('city/'.$item->id)}}" method="PATCH">
-                                    {{-- {{method_field('PATCH')}} --}}
-                                    @csrf_field
+                                <form action="{{url('city/'.$item->id)}}" method="POST">
+                                    {{method_field('PATCH')}}
+                                    @csrf
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -59,7 +59,7 @@
                                                         <label for="">Nombre:</label>
                                                     </div>
                                                     <div class="col-9">
-                                                        <input style="width: 100%;" type="text" name="cod" value="{{$item->name}}">
+                                                        <input style="width: 100%;" type="text" name="name" value="{{$item->name}}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -73,9 +73,9 @@
                             </div>
 
                             <div class="modal fade" id="deleteModal-{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-                                <form action="{{url('city/'.$item->id)}}" method="DELETE">
-                                    {{-- {{method_field('DELETE')}} --}}
-                                    @csrf_field
+                                <form action="{{url('city/'.$item->id)}}" method="POST">
+                                    {{method_field('DELETE')}}
+                                    @csrf
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -114,7 +114,7 @@
 
 <div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-labelledby="newModalLabel" aria-hidden="true">
     <form action="{{url('city')}}" method="POST">
-        @csrf_field
+        @csrf
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -137,7 +137,7 @@
                             <label for="">Nombre:</label>
                         </div>
                         <div class="col-9">
-                            <input style="width: 100%;" type="text" name="cod">
+                            <input style="width: 100%;" type="text" name="name">
                         </div>
                     </div>
                 </div>

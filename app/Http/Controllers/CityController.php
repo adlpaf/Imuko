@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\City;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class CityController extends Controller
 {
@@ -41,7 +42,7 @@ class CityController extends Controller
             'name'      => 'required|string',
         ]);
 
-        if ($validator->fails()) {
+        if ($validate->fails()) {
             return redirect('city')
                 ->withErrors($validator)
                 ->withInput();
@@ -54,7 +55,7 @@ class CityController extends Controller
 
         return redirect()->route('city.index');
 
-        return redirect('city')->with('message', 'Ciudad agregada con éxitos');
+        // return redirect('city')->with('message', 'Ciudad agregada con éxitos');
     }
 
     /**
@@ -88,9 +89,11 @@ class CityController extends Controller
      */
     public function update(Request $request, City $city)
     {
+        $city->cod = $request->cod;
         $city->name = $request->name;
         $city->save();
-        return redirect('city')->with('message', 'Ciudad actualizada con éxitos');
+        return redirect()->route('city.index');
+        // return redirect('city')->with('message', 'Ciudad actualizada con éxitos');
     }
 
     /**

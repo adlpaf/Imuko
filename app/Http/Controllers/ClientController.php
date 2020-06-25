@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Client;
 use App\City;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ClientController extends Controller
 {
