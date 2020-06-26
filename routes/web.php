@@ -27,5 +27,9 @@ Route::get('/home', 'ClientController@index')->name('home');
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('client', 'ClientController');
     Route::resource('city',   'CityController');
-    // Route::resource('user',   'UserController');
+    Route::resource('user',   'UserController');
 });
+
+// E-mail verification
+Route::get('/register/verify/{email}', 'ConfirmeController@setPassword');
+Route::post('/register/update', 'ConfirmeController@updatePassword');
