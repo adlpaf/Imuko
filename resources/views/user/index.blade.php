@@ -2,7 +2,7 @@
 
 @section('title')
     <title>
-        Imuko - Clientes
+        Imuko - Usuarios
     </title>
 @endsection
 
@@ -19,43 +19,33 @@
             <table id="table">
                 <thead>
                     <tr>
-                        <th>Código</th>
                         <th>Nombre</th>
-                        <th>Ciudad</th>
+                        <th>Email</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($clients as $item)
+                    @foreach ($users as $item)
                         <tr>
-                            <td>{{ $item->cod }}</td>
                             <td>{{ $item->name }}</td>
-                            <td>{{ $item->city_name }}</td>
+                            <td>{{ $item->email }}</td>
                             <td>
                                 <a href="#" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#updateModal-{{$item->id}}">Modificar</a>
                                 <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal-{{$item->id}}">Eliminar</a>
 
                                 <div class="modal fade" id="updateModal-{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
-                                    <form action="{{url('client/'.$item->id)}}" method="POST">
+                                    <form action="{{url('user/'.$item->id)}}" method="POST">
                                         {{method_field('PATCH')}}
                                         @csrf
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="deleteModalLabel">Eliminar Cliente</h5>
+                                                    <h5 class="modal-title" id="deleteModalLabel">Modificar Usuario</h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <div class="row">
-                                                        <div class="col-3">
-                                                            <label for="">Código:</label>
-                                                        </div>
-                                                        <div class="col-9">
-                                                            <input style="width: 100%;" type="text" name="cod" value="{{$item->cod}}">
-                                                        </div>
-                                                    </div>
                                                     <div class="row">
                                                         <div class="col-3">
                                                             <label for="">Nombre:</label>
@@ -66,14 +56,10 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-3">
-                                                            <label for="">Ciudad:</label>
+                                                            <label for="">Email:</label>
                                                         </div>
                                                         <div class="col-9">
-                                                            <select name="city_id" style="width: 100%">
-                                                                @foreach ($cities as $item2)
-                                                                    <option value="{{$item2->id}}">{{$item2->name}}</option>
-                                                                @endforeach
-                                                            </select>
+                                                            <input style="width: 100%;" type="email" name="email" value="{{$item->email}}">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -87,13 +73,13 @@
                                 </div>
 
                                 <div class="modal fade" id="deleteModal-{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-                                    <form action="{{url('client/'.$item->id)}}" method="POST">
+                                    <form action="{{url('user/'.$item->id)}}" method="POST">
                                         {{method_field('DELETE')}}
                                         @csrf
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="deleteModalLabel">Eliminar Cliente</h5>
+                                                    <h5 class="modal-title" id="deleteModalLabel">Eliminar Usuario</h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
@@ -101,17 +87,12 @@
                                                 <div class="modal-body">
                                                     <div class="row">
                                                         <div class="col-12">
-                                                            <label for="">Código: {{$item->cod}}</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-12">
                                                             <label for="">Nombre: {{$item->name}}</label>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-12">
-                                                            <label for="">Ciudad: {{$item->city_name}}</label>
+                                                            <label for="">Email: {{$item->email}}</label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -132,25 +113,17 @@
     </div>
 
     <div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-labelledby="newModalLabel" aria-hidden="true">
-        <form action="{{url('client')}}" method="POST">
+        <form action="{{url('user')}}" method="POST">
             @csrf
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="deleteModalLabel">Nuevo Cliente</h5>
+                        <h5 class="modal-title" id="deleteModalLabel">Nuevo Usuario</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="row">
-                            <div class="col-3">
-                                <label for="">Código:</label>
-                            </div>
-                            <div class="col-9">
-                                <input style="width: 100%;" type="text" name="cod">
-                            </div>
-                        </div>
                         <div class="row">
                             <div class="col-3">
                                 <label for="">Nombre:</label>
@@ -161,14 +134,10 @@
                         </div>
                         <div class="row">
                             <div class="col-3">
-                                <label for="">Ciudad:</label>
+                                <label for="">Email:</label>
                             </div>
                             <div class="col-9">
-                                <select name="city_id" style="width: 100%">
-                                    @foreach ($cities as $item2)
-                                        <option value="{{$item2->id}}">{{$item2->name}}</option>
-                                    @endforeach
-                                </select>
+                                <input style="width: 100%;" type="email" name="email">
                             </div>
                         </div>
                     </div>

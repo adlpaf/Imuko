@@ -8,6 +8,7 @@
 
 @section('content')
     <form action="{{url('/register/update')}}" method="post">
+        @csrf
         <div class="row">
             <div class="col-5">
                     <label for="password">Clave</label>
@@ -28,8 +29,8 @@
             <div class="col-10">
             </div>
             <div class="col-2">
-                <button type="submit" class="btn btn-success btn-sm">Aceptar</button>
                 <input type="hidden" name="email" value="{{$email}}">
+                <button type="submit" class="btn btn-success btn-sm">Aceptar</button>
             </div>
         </div>
     </form>

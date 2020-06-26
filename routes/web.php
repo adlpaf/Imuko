@@ -32,4 +32,4 @@ Route::group(['middleware' => ['auth']], function () {
 
 // E-mail verification
 Route::get('/register/verify/{email}', 'ConfirmeController@setPassword');
-Route::post('/register/update', 'ConfirmeController@updatePassword');
+Route::post('/register/update',        'ConfirmeController@updatePassword');

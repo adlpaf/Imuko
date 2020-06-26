@@ -58,7 +58,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ url('/client') }}">Clientes</a>
                                     <a class="dropdown-item" href="{{ url('/city') }}">Ciudades</a>
-                                    {{-- <a class="dropdown-item" href="{{ url('/users') }}">Usuarios</a> --}}
+                                    <a class="dropdown-item" href="{{ url('/user') }}">Usuarios</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
@@ -89,7 +89,6 @@
                                         {{ session('status') }}
                                     </div>
                                 @endif
-            
                                 @yield('content')
                             </div>
                         </div>

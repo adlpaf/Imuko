@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class ConfirmeController extends Controller
 {
@@ -12,10 +13,10 @@ class ConfirmeController extends Controller
         // return view('client.index', compact('clients', 'cities'));
     }
 
-    public function updatePassword(Request $requet) {
-        $user = User::where('email', $email)->first();
+    public function updatePassword(Request $request) {
+        $user = User::where('email', $request->email)->first();
     
-        if (! $user)
+        if (!$user)
             return redirect('/');
     
         $user->password = bcrypt($request->password);
