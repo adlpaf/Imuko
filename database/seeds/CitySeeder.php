@@ -11,6 +11,20 @@ class CitySeeder extends Seeder
      */
     public function run()
     {
-        //
+        $city = new City();
+        $city->name = 'Bogota';
+        $city->cod  = 'BGT';
+        $city->save();
+
+        $city = new City();
+        $city->name = 'Cartagena de Indias';
+        $city->cod  = 'CTG';
+        $city->save();
+
+        $city = new City();
+        $city->name = 'Cúcuta';
+        $city->cod  = 'CCT';
+        $city->save();
+
     }
 }

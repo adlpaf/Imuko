@@ -38,7 +38,7 @@ class Database extends Command
     public function handle()
     {
         // echo "Intro test";
-        exec('php artisan db:seed');
+        exec('php artisan migrate --seed');
         // echo "Pass test";
     }
 }

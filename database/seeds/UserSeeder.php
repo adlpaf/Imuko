@@ -14,26 +14,20 @@ class UserSeeder extends Seeder
     {
         $user = new User();
         $user->name = 'Admin';
-        $user->email = 'admin.itoeste@admin.com';
+        $user->email = 'admin@admin.com';
         $user->password = bcrypt('123456789');
         $user->save();
 
         $user = new User();
         $user->name = 'Manager';
-        $user->email = 'manager.itoeste@manager.com';
+        $user->email = 'manager@manager.com';
         $user->password = bcrypt('12345678');
         $user->save();
 
         $user = new User();
         $user->name = 'Propietario';
-        $user->email = 'owner.itoeste@owner.com';
+        $user->email = 'owner@owner.com';
         $user->password = bcrypt('1234567');
-        $user->save();
-
-        $user = new User();
-        $user->name = 'Inquilino';
-        $user->email = 'tenant.itoeste@tenant.com';
-        $user->password = bcrypt('123456');
         $user->save();
 
     }
